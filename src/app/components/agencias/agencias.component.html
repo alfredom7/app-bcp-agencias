@@ -1,0 +1,35 @@
+
+<div class="bcp-header">
+    <div class="bcp-header__title">Agencias</div>
+    <div class="bcp-header__buttons">
+        <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
+        <a href=""><i class="fa-regular fa-circle-check"></i></a>
+    </div>
+</div>
+
+<div class="bcp-body container-fluid">
+    <div class="list-group mt-2" *ngFor="let ag of agencias;">
+        <a href="javascript:void(0);" [routerLink]="['/detalle', ag.id]" class="list-group-item list-group-item-action animate__animated animate__slideInRight" aria-current="true">
+          <div class="row">
+            <div class="col-sm-2 avatar-list-bcp">
+              <img [src]="'assets/images/avatar/'+getRandomIntInclusive(1, 35)+'.jpg'" alt="Avatar">
+            </div>
+            <div class="col-sm-10">
+              <h5 class="mb-1">{{ag.agencia}}</h5>
+              <div class="d-flex w-100 justify-content-between">
+                <p class="mb-1 ">{{ag.departamento}} - {{ag.provincia}} - {{ag.distrito}}</p>
+                <small class="favoicon-bpc"><i class="fa-regular fa-star"></i></small>
+              </div>
+              <small>{{ag.direccion}}</small>
+            </div>
+          </div>
+
+        </a>
+      </div>
+</div>
+
+<div class="bcp-float-add-button">
+  <div>
+    <i class="fa-solid fa-plus"></i>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="bcp-header d-flex">
+    <div class="bcp-header__volver">
+      <a [routerLink]="['/agencias']">
+        <i class="fa-sharp fa-solid fa-arrow-left"></i> Volver
+      </a>
+      </div>
+    <div class="bcp-header__title">Detalle de la Agencia</div>
+</div>
+
+<div class="bcp-body container-fluid">
+    <form class="mt-5 bcp-form-agencia">
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre de Agencia</label>
+          <input type="text" class="form-control" id="nombre" name="nombreAgencia" [(ngModel)]="nombreAgencia">
+        </div>
+        <div class="mb-3">
+          <label for="direccion" class="form-label">Dirección</label>
+          <input type="text" class="form-control" id="direccion" name="direccionAgencia" [(ngModel)]="direccionAgencia">
+        </div>
+        <div class="mb-3">
+          <label for="distrito" class="form-label">Distrito</label>
+          <input type="text" class="form-control" id="distrito" name="distritoAgencia" [(ngModel)]="distritoAgencia">
+        </div>
+        <div class="mb-3">
+          <label for="latitud" class="form-label">Latitud</label>
+          <input type="text" class="form-control" id="latitud" name="latitudAgencia" [(ngModel)]="latitudAgencia">
+        </div>
+        <div class="mb-3">
+          <label for="longitud" class="form-label">Longitud</label>
+          <input type="text" class="form-control" id="longitud" name="longitudAgencia" [(ngModel)]="longitudAgencia">
+        </div>
+        
+        <div class="text-center mt-3">
+            <button (click)="actualizarAgencia()" type="submit" class="btn btn-primary">Actualizar</button>
+        </div>
+      </form>
+
+      <div class="text-center mt-3" id="outerdiv">
+        <!-- Al hacer click en cualquier parte del mapa en una nueva ubicación las
+          coordenadas de la agencia son actualizadas y se guardaran al hacer click en el
+          botón Actualizar-->
+        
+        <google-map *ngIf="showMap"
+          height="400px"
+          width="500px"
+          [center]="center"
+          [zoom]="zoom"
+          (mapClick)="addMarker($event)">
+            <map-marker *ngFor="let markerPosition of markerPositions"
+                [position]="markerPosition"
+                [options]="markerOptions">
+            </map-marker>
+        </google-map>
+      </div>
+</div>
