@@ -28,7 +28,7 @@ export class DetalleComponent implements OnInit {
     lat: this.latitudAgencia,
     lng: this.longitudAgencia
   };
-  zoom = 10;
+  zoom = 14;
   markerOptions: google.maps.MarkerOptions = {
       draggable: false
   };
@@ -77,7 +77,8 @@ export class DetalleComponent implements OnInit {
           provincia: agencia.provincia,
           departamento: agencia.departamento,
           lat: this.latitudAgencia,
-          lon: this.longitudAgencia
+          lon: this.longitudAgencia,
+          favorite: agencia.favorite
         });
         localStorage.removeItem('agencias');
         localStorage.setItem('agencias', JSON.stringify(agenciasFiltradas));
@@ -111,7 +112,6 @@ export class DetalleComponent implements OnInit {
   }
 
   addMarker(event: google.maps.MapMouseEvent) {
-    
       if (event.latLng != null) {
         const position = event.latLng.toJSON();
         this.latitudAgencia = position.lat;

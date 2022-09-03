@@ -13,6 +13,8 @@ export class AgenciasComponent implements OnInit {
   constructor(private agenciasService: AgenciasService, private router: Router) { }
 
   agencias: Agencia[] = [];
+  showBusqueda: boolean = false;
+  searchText: string = '';
 
   ngOnInit(): void {
     let localAgencias = localStorage.getItem('agencias');
@@ -26,14 +28,13 @@ export class AgenciasComponent implements OnInit {
       
     } else {
       this.agenciasService.get_agencias()
-          .subscribe(data => {
-            let ordenarAgencias = this.agenciasService.ordenar_agencias(data);
-            localStorage.setItem('agencias', JSON.stringify(ordenarAgencias));
-            ordenarAgencias.forEach((ag: Agencia) => {
-              this.agencias.push(ag);
-            });
+        .subscribe(data => {
+          let ordenarAgencias = this.agenciasService.ordenar_agencias(data);
+          localStorage.setItem('agencias', JSON.stringify(ordenarAgencias));
+          ordenarAgencias.forEach((ag: Agencia) => {
+            this.agencias.push(ag);
           });
-
+        });
     }
   }
 
@@ -43,4 +44,19 @@ export class AgenciasComponent implements OnInit {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
+  favorito(agenciaId: number){
+    let data = JSON.parse(localStorage.getItem('agencias') || '{}');
+    let ordenarAgencias = this.agenciasService.ordenar_agencias(data);
+    this.agencias = [];
+    ordenarAgencias.forEach((ag: Agencia) => {
+      if(ag.id === agenciaId) ag.favorite = !ag.favorite;
+      this.agencias.push(ag);
+    });
+    localStorage.removeItem('agencias');
+    localStorage.setItem('agencias', JSON.stringify(this.agencias));
+  }
+
+  mostrarBusqueda(){
+    this.showBusqueda = !this.showBusqueda;
+  }
 }

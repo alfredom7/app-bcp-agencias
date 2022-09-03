@@ -2,13 +2,17 @@
 <div class="bcp-header">
     <div class="bcp-header__title">Agencias</div>
     <div class="bcp-header__buttons">
-        <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
-        <a href=""><i class="fa-regular fa-circle-check"></i></a>
+        <a href="javascript:void(0);" (click)="mostrarBusqueda()"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <a href="javascript:void(0);"><i class="fa-regular fa-circle-check"></i></a>
+    </div>
+    <div class="bcp-header__busqueda d-flex" *ngIf="showBusqueda">
+      <input class="form-control me-2" type="search" placeholder="Ingrese para buscar la agencia." aria-label="Search">
+      <button class="btn btn-light">Buscar</button>
     </div>
 </div>
 
 <div class="bcp-body container-fluid">
-    <div class="list-group mt-2" *ngFor="let ag of agencias;">
+    <div class="list-group mt-2" *ngFor="let ag of agencias;" >
         <a href="javascript:void(0);" [routerLink]="['/detalle', ag.id]" class="list-group-item list-group-item-action animate__animated animate__slideInRight" aria-current="true">
           <div class="row">
             <div class="col-sm-2 avatar-list-bcp">
@@ -18,7 +22,7 @@
               <h5 class="mb-1">{{ag.agencia}}</h5>
               <div class="d-flex w-100 justify-content-between">
                 <p class="mb-1 ">{{ag.departamento}} - {{ag.provincia}} - {{ag.distrito}}</p>
-                <small class="favoicon-bpc"><i class="fa-regular fa-star"></i></small>
+                <small (click)="favorito(ag.id)" class="favoicon-bpc"><i [className]="ag.favorite ? 'fa-solid fa-star' : 'fa-regular fa-star'"></i></small>
               </div>
               <small>{{ag.direccion}}</small>
             </div>

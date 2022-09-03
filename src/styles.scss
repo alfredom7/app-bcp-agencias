@@ -8,7 +8,6 @@ $color_white: #ffffff;
 
 .bcp-container{
     height: 100vh;
-    min-width: 300px;
     .bcp-loading{
       z-index: 99999999999999;
         background: $color_primary;
@@ -31,14 +30,15 @@ $color_white: #ffffff;
       top: 0;
         &__title{
             float: left;
-            width: 50%;
+            width: 60%;
             height: 65px;
-            font-size: 20px;
+            font-size: 18px;
+            line-height: 30px;
         }
         &__buttons{
             float: right;
             text-align: right;
-            width: 50%;
+            width: 40%;
             height: 65px;
             font-size: 20px;
             i{
@@ -48,6 +48,8 @@ $color_white: #ffffff;
             }
         }
         &__volver{
+          float: left;
+          width: 100px;
           a{
             font-size: 18px;
             font-weight: 600;
@@ -60,6 +62,13 @@ $color_white: #ffffff;
           i{
             color: $color_white;
           }
+        }
+        &__busqueda{
+          width: 100%;
+          background-color: #002D87;
+          height: 65px;
+          padding: 14px 20px;
+          border-radius: 18px;
         }
     }
     .bcp-body{
@@ -77,6 +86,7 @@ $color_white: #ffffff;
         }
         .avatar-list-bcp{
           min-width: 100px;
+          text-align: center;
           img{
             width: 80px;
             padding-bottom: 5px;
@@ -90,6 +100,14 @@ $color_white: #ffffff;
             color: $color_primary
           }
         }
+      }
+      .boton-actualizar{
+        background-color: $color_secondary;
+        color: $color_white;
+        border: none;
+      }
+      .favoicon-bpc i.fa-solid{
+        color: $color_secondary;
       }
     }
 

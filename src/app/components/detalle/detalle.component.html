@@ -11,38 +11,41 @@
     <form class="mt-5 bcp-form-agencia">
         <div class="mb-3">
           <label for="nombre" class="form-label">Nombre de Agencia</label>
-          <input type="text" class="form-control" id="nombre" name="nombreAgencia" [(ngModel)]="nombreAgencia">
+          <input type="text" class="form-control" id="nombre" name="nombreAgencia" [(ngModel)]="nombreAgencia" required>
         </div>
         <div class="mb-3">
           <label for="direccion" class="form-label">Dirección</label>
-          <input type="text" class="form-control" id="direccion" name="direccionAgencia" [(ngModel)]="direccionAgencia">
+          <input type="text" class="form-control" id="direccion" name="direccionAgencia" [(ngModel)]="direccionAgencia" required>
         </div>
         <div class="mb-3">
           <label for="distrito" class="form-label">Distrito</label>
-          <input type="text" class="form-control" id="distrito" name="distritoAgencia" [(ngModel)]="distritoAgencia">
+          <input type="text" class="form-control" id="distrito" name="distritoAgencia" [(ngModel)]="distritoAgencia" required>
         </div>
         <div class="mb-3">
           <label for="latitud" class="form-label">Latitud</label>
-          <input type="text" class="form-control" id="latitud" name="latitudAgencia" [(ngModel)]="latitudAgencia">
+          <input type="number" class="form-control" id="latitud" name="latitudAgencia" [(ngModel)]="latitudAgencia" required>
         </div>
         <div class="mb-3">
           <label for="longitud" class="form-label">Longitud</label>
-          <input type="text" class="form-control" id="longitud" name="longitudAgencia" [(ngModel)]="longitudAgencia">
+          <input type="number" class="form-control" id="longitud" name="longitudAgencia" [(ngModel)]="longitudAgencia" required>
         </div>
         
         <div class="text-center mt-3">
-            <button (click)="actualizarAgencia()" type="submit" class="btn btn-primary">Actualizar</button>
+            <button (click)="actualizarAgencia()" type="submit" class="btn btn-primary btn-lg boton-actualizar">Actualizar</button>
         </div>
       </form>
 
       <div class="text-center mt-3" id="outerdiv">
+        <div class="alert alert-primary" role="alert">
+          Desplácese dentro del mapa y presione en el lugar deseado para cambiar la ubicación de la agencia.
+        </div>
         <!-- Al hacer click en cualquier parte del mapa en una nueva ubicación las
           coordenadas de la agencia son actualizadas y se guardaran al hacer click en el
           botón Actualizar-->
         
         <google-map *ngIf="showMap"
           height="400px"
-          width="500px"
+          width="100%"
           [center]="center"
           [zoom]="zoom"
           (mapClick)="addMarker($event)">
