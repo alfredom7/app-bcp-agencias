@@ -7,7 +7,7 @@
     <div class="bcp-header__title">Detalle de la Agencia</div>
 </div>
 
-<div class="bcp-body container-fluid">
+<div class="bcp-body container">
     <form class="mt-5 bcp-form-agencia">
         <div class="mb-3">
           <label for="nombre" class="form-label">Nombre de Agencia</label>
@@ -29,7 +29,7 @@
           <label for="longitud" class="form-label">Longitud</label>
           <input type="number" class="form-control" id="longitud" name="longitudAgencia" [(ngModel)]="longitudAgencia" required>
         </div>
-        
+
         <div class="text-center mt-3">
             <button (click)="actualizarAgencia()" type="submit" class="btn btn-primary btn-lg boton-actualizar">Actualizar</button>
         </div>
@@ -42,7 +42,7 @@
         <!-- Al hacer click en cualquier parte del mapa en una nueva ubicación las
           coordenadas de la agencia son actualizadas y se guardaran al hacer click en el
           botón Actualizar-->
-        
+
         <google-map *ngIf="showMap"
           height="400px"
           width="100%"

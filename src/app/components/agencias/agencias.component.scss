@@ -1,0 +1,29 @@
+.container-list-item-bcp{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .avatar-list-bcp{
+    flex-basis: 100px;
+    padding-right: 15px;
+  }
+
+  .avatar-list-bcp2{
+    flex-grow: 1;
+  }
+}
+
+@media (max-width: 500px) {
+  .container-list-item-bcp{
+
+    .avatar-list-bcp{
+      flex-basis: 100%;
+      padding-right: none;
+      flex-grow: 1;
+    }
+
+    .avatar-list-bcp2{
+      flex-grow: 2;
+    }
+  }
+}
